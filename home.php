@@ -28,13 +28,39 @@
             font-size: 1.8rem;
             margin-bottom: 30px;
         }
+        button{
+            background-color: #0a3c55;
+        }
+        .btn{
+            background-color:#35b3a0;
+            border: none;
+            padding: 12px 30px;
+            color: #0c3c60;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+            color:aliceblue;
+        } 
+        .btn-primary:hover {
+            background-color:black;
+            transform: translateY(-4px);
+        }
+        
     </style>
 </head>
 <body>
     <div class="hero">
         <h1 id="pageTitle">Ensemble, sortons Madagascar de la pauvreté</h1>
         <p id="pageSubtitle">Agir maintenant pour un avenir meilleur</p>
+        <!-- Bouton pour la page suivante -->
+<a href="create.php" class="btn btn-primary">Page suivante</a>
+
+
     </div>
+    <button onclick="window.history.back();" class="btn btn-secondary">Retour</button>
 
     <script>
         // Animation d'entrée de la page

@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solutions - Madagascar Pauvreté</title>
-    <!-- Liens vers les polices modernes -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Lien vers Bootstrap 5 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <style>
         body {
@@ -19,80 +17,43 @@
 
         .container {
             padding: 50px 20px;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
             animation: fadeIn 1.5s ease-out;
         }
 
         h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 20px;
             color: #fdbb2d;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             font-family: 'Montserrat', sans-serif;
-            animation: fadeIn 1.5s ease-out;
         }
 
-        ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 30px;
-            animation: fadeIn 2s ease-out;
+        .card {
+            margin: 20px 0;
+            background-color: #1a2b3a;
+            border: 1px solid #ffcc00;
+            border-radius: 10px;
+            color: #fff;
         }
 
-        li {
-            margin: 10px 0;
+        .card-header {
+            background-color: #fdbb2d;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 10px;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
             font-size: 1.2rem;
             color: #ffcc00;
-            animation: fadeIn 2s ease-out;
-        }
-
-        li:hover {
-            color: #fdbb2d;
-            cursor: pointer;
-            transform: translateY(-5px);
-            transition: transform 0.3s, color 0.3s ease;
-        }
-
-        textarea {
-            margin-top: 20px;
-            padding: 10px;
-            width: 100%;
-            font-size: 1rem;
-            border: 1px solid #ffcc00;
-            background-color: transparent;
-            color: #fff;
-            border-radius: 5px;
-            resize: none;
-            transition: border 0.3s ease;
-        }
-
-        textarea:focus {
-            border: 1px solid #fdbb2d;
-            outline: none;
-        }
-
-        .cta-section {
-            background-color: #0c3c60;
-            padding: 40px 20px;
-            margin-top: 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta-section h3 {
-            font-size: 2rem;
-            color: #fdbb2d;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: #fff;
         }
 
         .cta-btn {
@@ -116,79 +77,166 @@
             transform: translateY(1px);
         }
 
-        .submit-btn {
-            padding: 10px 20px;
-            background-color: #ffcc00;
-            color: #0c3c60;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        .submit-btn:hover {
-            background-color: #fdbb2d;
-            transform: scale(1.05);
-        }
-
-        .message-confirmation {
-            font-size: 1.5rem;
-            color: #fdbb2d;
-            margin-top: 20px;
-            display: none;
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Section témoignages améliorée */
+        .testimonials {
+            background-color: #1a2b3a;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            background-color: #0c3c60;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .testimonial-item img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #fdbb2d;
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .testimonial-carousel .carousel-item img {
+            max-height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .investment-options {
+            background-color: #0c3c60;
+            padding: 40px 20px;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .investment-options h3 {
+            font-size: 2rem;
+            color: #fdbb2d;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .investment-options p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 2rem;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #fdbb2d;
+        }
     </style>
 </head>
 <body>
-    <!-- Section Solutions -->
     <div class="container" id="solutions">
         <h2>Nos Solutions</h2>
-        <ul>
-            <li>Fournir une éducation accessible</li>
-            <li>Construire des infrastructures durables</li>
-            <li>Promouvoir l'agriculture durable</li>
-            <li>Encourager l'entrepreneuriat local</li>
-        </ul>
-        <p>Proposez une solution ci-dessous :</p>
-        <textarea id="solutionMessage" placeholder="Proposez une solution ici..." rows="4"></textarea>
-        <br>
-        <button class="submit-btn" onclick="submitSolution()">Envoyer</button> <!-- Bouton envoyer -->
-        <p class="message-confirmation" id="confirmationMessage">Merci pour votre proposition !</p> <!-- Message de confirmation -->
-    </div>
 
-    <!-- Section Appel à l'action -->
-    <div class="cta-section container" id="contact">
-        <h3>Rejoignez notre mission et faites la différence</h3>
-        <p>Nous sommes en train de transformer Madagascar, mais nous avons besoin de partenaires stratégiques pour aller plus loin. Si vous êtes prêt à faire une réelle différence, contactez-nous dès maintenant et rejoignez notre cause.</p>
-        <a href="contact.php" class="cta-btn">Contactez-nous maintenant</a> <!-- Bouton lié à la page contact.php -->
-    </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">Énergie Renouvelable</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Investir dans des énergies renouvelables</h5>
+                        <p>Les entreprises peuvent participer à l'essor de l'énergie solaire et éolienne pour des bénéfices à long terme et un impact positif sur l'environnement.</p>
+                        <!-- Lien vers recherche Google sur les énergies renouvelables -->
+                        <a href="https://www.google.com/search?q=énergie+renouvelable+Madagascar" target="_blank" class="cta-btn">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Section Contact -->
-    <div class="container" id="contact">
-        <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank" class="fab fa-facebook"></a>
-            <a href="https://web.whatsapp.com" target="_blank" class="fab fa-whatsapp"></a>
-            <a href="https://www.instagram.com" target="_blank" class="fab fa-instagram"></a>
-            <a href="https://www.linkedin.com" target="_blank" class="fab fa-linkedin"></a>
-            <a href="mailto:contact@votreemail.com" target="_blank" class="fas fa-envelope"></a>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">Infrastructures Durables</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Investir dans des infrastructures modernes</h5>
+                        <p>Le développement d'infrastructures durables peut générer des revenus tout en améliorant la qualité de vie à Madagascar.</p>
+                        <!-- Lien vers recherche Google sur les infrastructures durables -->
+                        <a href="https://www.google.com/search?q=infrastructure+durable+Madagascar" target="_blank" class="cta-btn">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">Agriculture Durable</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Soutenir l'agriculture durable</h5>
+                        <p>Encouragez l'agriculture biologique et durable pour créer des opportunités économiques tout en protégeant l'environnement.</p>
+                        <!-- Lien vers recherche Google sur l'agriculture durable -->
+                        <a href="https://www.google.com/search?q=agriculture+durable+Madagascar" target="_blank" class="cta-btn">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Témoignages améliorés -->
+        <div class="testimonials">
+            <h2>Témoignages d'entreprises</h2>
+            <div class="testimonial-carousel carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-item">
+                            <img src="company1.jpg" alt="Entreprise X">
+                            <div class="testimonial-text">"Investir dans les énergies renouvelables à Madagascar a non seulement réduit nos coûts, mais a aussi ouvert de nouvelles opportunités commerciales."</div>
+                            <p class="testimonial-author">- Entreprise X</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-item">
+                            <img src="company2.jpg" alt="Entreprise Y">
+                            <div class="testimonial-text">"Les infrastructures modernes ont grandement amélioré notre efficacité opérationnelle et ont contribué à un retour sur investissement rapide."</div>
+                            <p class="testimonial-author">- Entreprise Y</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section pour investir -->
+        <div class="investment-options">
+            <h3>Investir Maintenant</h3>
+            <p>Si vous souhaitez investir, veuillez remplir le formulaire ci-dessous pour obtenir plus d'informations.</p>
+            <a href="investe.php" class="btn btn-primary">Investir Maintenant</a>
+            <button onclick="window.history.back();" class="btn btn-secondary">Retour</button>
+
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <script>
-        function submitSolution() {
-            var message = document.getElementById('solutionMessage').value;
-            if (message.trim() !== '') {
-                document.getElementById('solutionMessage').value = ''; // Efface le message
-                document.getElementById('confirmationMessage').style.display = 'block'; // Affiche la confirmation
-            }
-        }
-    </script>
+    <!-- Scripts Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

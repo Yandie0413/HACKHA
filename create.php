@@ -61,9 +61,6 @@
                         <a class="nav-link" href="home.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="problem.php">Problème</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="solution.php">Solution</a>
                     </li>
                     <li class="nav-item">

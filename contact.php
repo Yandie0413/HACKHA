@@ -66,6 +66,20 @@
             width: 100%;
             bottom: 0;
         }
+        .btn{
+            background-color: white;
+            border: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            z-index: 2;
+        
+        }
+
+        .btn btn-seconadry:hover {
+            background-color: #fdbb2d;
+            transform: translateY(-3px);
+            transition: background-color 0.4s,transform 0.1s;
+        }
     </style>
 </head>
 <body>
@@ -78,9 +92,12 @@
             <a href="https://web.whatsapp.com" target="_blank" class="fab fa-whatsapp"></a>
             <a href="https://www.instagram.com" target="_blank" class="fab fa-instagram"></a>
             <a href="https://www.linkedin.com" target="_blank" class="fab fa-linkedin"></a>
-            <a href="mailto:contact@votreemail.com" target="_blank" class="fas fa-envelope"></a>
+            <a href="https://www.Gmail.com" target="_blank" class="fas fa-envelope"></a>
+           
         </div>
     </div>
+    <button onclick="window.history.back();" class="btn btn-secondary">Retour</button>
+
 
     <!-- Footer -->
     <div class="footer">
