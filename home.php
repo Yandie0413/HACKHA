@@ -221,7 +221,7 @@
             if (investmentType === 'rural') {
                 window.location.href = 'Hackathon/index.php'; // Remplace ce chemin par l'URL de ton projet rural
             } else if (investmentType === 'urban') {
-                window.location.href = 'chemin/vers/le/projet_urbain'; // Remplace ce chemin par l'URL de ton projet urbain
+                window.location.href = 'urbain/backend.php/config.php/index.html'; // Remplace ce chemin par l'URL de ton projet urbain
             }
         });
     </script>
