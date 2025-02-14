@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,7 +15,7 @@
             margin: 0;
         }
         .navbar {
-            background-color: #000;
+            background-color: transparent;
         }
         .navbar-nav .nav-link {
             color: #ffcc00 !important;
@@ -45,9 +46,54 @@
         .search-bar button:hover {
             background-color: #fdbb2d;
         }
+        .intro-section {
+            padding: 50px 15px;
+        }
+        .intro-text {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #f8f9fa;
+            text-align: justify;
+        }
+        .text-center {
+            margin-bottom: 20px;
+        }
+        /* Ajout d'un style pour les formulaires */
+        .form-section {
+            margin: 20px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .form-section input, .form-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .form-section button {
+            background-color: #ffcc00;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-section button:hover {
+            background-color: #fdbb2d;
+        }
+        .table {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .table th, .table td {
+            color: #f8f9fa;
+        }
     </style>
 </head>
 <body>
+
     <!-- Barre de navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -58,7 +104,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="home.php">Home</a>
+                        <a class="nav-link" href="home.php">Acceuil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="solution.php">Solution</a>
@@ -83,6 +129,8 @@
             window.open(`https://www.google.com/search?q=${query}`, '_blank');
         }
     </script>
+
+   
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
