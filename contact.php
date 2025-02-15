@@ -80,6 +80,119 @@
             transform: translateY(-3px);
             transition: background-color 0.4s,transform 0.1s;
         }
+        body {
+            background: linear-gradient(to right, #0c3c60, #0a3c55, #35b3a0);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            font-size: 3.2em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        h2,
+        h3 {
+            font-weight: bold;
+            color: #f8f9fa;
+        }
+
+        .solution-2 h3 {
+            font-size: 1.6em;
+            margin-top: 20px;
+        }
+
+        .solution-2 p {
+            font-size: 1.1em;
+            color: #f8f9fa;
+        }
+
+        .div {
+            margin-top: 40px;
+        }
+
+        .btn-primary {
+            background-color: #ff5733;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff2d00;
+            transform: scale(1.05);
+        }
+
+        .solution-2 {
+            display: none;
+            margin-top: 20px;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .solution-left,
+        .solution-right {
+            margin-top: 20px;
+        }
+
+        .solution-left {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .solution-right {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .card {
+                margin-bottom: 20px;
+            }
+
+            .solution-left,
+            .solution-right {
+                margin-bottom: 20px;
+            }
+    
     </style>
 </head>
 <body>

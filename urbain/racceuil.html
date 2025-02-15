@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Déchets et Conversion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Ajout de Chart.js -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fc;
+            padding-top: 50px;
+        }
+
+        .header {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #004d7f;
+            font-weight: bold;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.7rem;
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .form-control,
+        .btn {
+            border-radius: 10px;
+        }
+
+        .btn-primary {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .table th,
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 15px;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table td {
+            background-color: #f8f9fc;
+            color: #333;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .dashboard {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .dashboard-card {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        /* Style du graphique */
+        .chart-container {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Gestion des Déchets et Conversion</h1>
+        </div>
+
+        <!-- Tableau de Bord -->
+        <div class="dashboard">
+            <div class="card dashboard-card">
+                <div class="card-header">
+                    <h3>Total des Déchets Collectés</h3>
+                </div>
+                <div class="card-body">
+                    <p id="totalDechets" class="display-6">0 kg</p>
+                </div>
+            </div>
+
+            <div class="card dashboard-card">
+                <div class="card-header">
+                    <h3>Total Carburant Généré</h3>
+                </div>
+                <div class="card-body">
+                    <p id="totalCarburant" class="display-6">0 L</p>
+                </div>
+            </div>
+
+            <div class="card dashboard-card">
+                <div class="card-header">
+                    <h3>Total Électricité Générée</h3>
+                </div>
+                <div class="card-body">
+                    <p id="totalElectricite" class="display-6">0 kWh</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulaire pour ajouter une collecte -->
+        <div class="card">
+            <div class="card-header">
+                <h3>Ajouter une Collecte de Déchets</h3>
+            </div>
+            <div class="card-body">
+                <form id="collecteForm">
+                    <div class="row">
+                        <div class="col-md-2 mb-3">
+                            <label for="jour" class="form-label">Jour</label>
+                            <input type="text" class="form-control" id="jour" placeholder="Jour" required>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="plastiquesCollectes" class="form-label">Plastiques</label>
+                            <input type="number" class="form-control" id="plastiquesCollectes" required>
+                            <select class="form-control mt-2" id="plastiquesUnit">
+                                <option value="kg">kg</option>
+                                <option value="tonne">tonne</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="organiqueCollectes" class="form-label">Organique</label>
+                            <input type="number" class="form-control" id="organiqueCollectes" required>
+                            <select class="form-control mt-2" id="organiqueUnit">
+                                <option value="kg">kg</option>
+                                <option value="tonne">tonne</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="electroniquesCollectes" class="form-label">Électroniques</label>
+                            <input type="number" class="form-control" id="electroniquesCollectes" required>
+                            <select class="form-control mt-2" id="electroniquesUnit">
+                                <option value="kg">kg</option>
+                                <option value="tonne">tonne</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="metalliquesCollectes" class="form-label">Métalliques</label>
+                            <input type="number" class="form-control" id="metalliquesCollectes" required>
+                            <select class="form-control mt-2" id="metalliquesUnit">
+                                <option value="kg">kg</option>
+                                <option value="tonne">tonne</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 mt-4">
+                            <button type="button" class="btn btn-primary w-100" onclick="ajouterCollecte()">Ajouter à la Collecte</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tableau des Collectes -->
+        <div class="card">
+            <div class="card-header">
+                <h3>Liste des Collectes</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Jour</th>
+                                <th>Plastiques (kg)</th>
+                                <th>Organique (kg)</th>
+                                <th>Électroniques (kg)</th>
+                                <th>Métalliques (kg)</th>
+                                <th>Carburant (litres)</th>
+                                <th>Électricité (kWh)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="collecteTableBody">
+                            <!-- Les lignes seront ajoutées ici dynamiquement -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Graphique des Statistiques -->
+        <div class="card chart-container">
+            <div class="card-header">
+                <h3>Statistiques des Collectes</h3>
+            </div>
+            <div class="card-body">
+                <canvas id="statistiquesChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Fonction de conversion en kg
+        function convertirEnKg(valeur, unite) {
+            if (unite === "tonne") {
+                return valeur * 1000;  // Conversion de tonne en kilogramme
+            }
+            return valeur;
+        }
+
+        // Fonctions de conversion pour carburant et électricité
+        function convertirCarburant(plastiques, organique, electroniques) {
+            const plastiquesCarburant = plastiques * 0.8; // Litres
+            const organiqueCarburant = organique * 0.1;  // Litres
+            const electroniquesCarburant = electroniques * 1.2; // Litres
+            return plastiquesCarburant + organiqueCarburant + electroniquesCarburant;
+        }
+
+        function convertirElectricite(plastiques, organique, electroniques) {
+            const plastiquesElectricite = plastiques * 1.5; // kWh
+            const organiqueElectricite = organique * 0.2; // kWh
+            const electroniquesElectricite = electroniques * 2.0; // kWh
+            return plastiquesElectricite + organiqueElectricite + electroniquesElectricite;
+        }
+
+        // Ajouter une collecte
+        function ajouterCollecte() {
+            const jour = document.getElementById("jour").value;
+            const plastiquesCollectes = parseFloat(document.getElementById("plastiquesCollectes").value);
+            const plastiquesUnite = document.getElementById("plastiquesUnit").value;
+            const organiqueCollectes = parseFloat(document.getElementById("organiqueCollectes").value);
+            const organiqueUnite = document.getElementById("organiqueUnit").value;
+            const electroniquesCollectes = parseFloat(document.getElementById("electroniquesCollectes").value);
+            const electroniquesUnite = document.getElementById("electroniquesUnit").value;
+            const metalliquesCollectes = parseFloat(document.getElementById("metalliquesCollectes").value);
+            const metalliquesUnite = document.getElementById("metalliquesUnit").value;
+
+            const plastiquesKg = convertirEnKg(plastiquesCollectes, plastiquesUnite);
+            const organiqueKg = convertirEnKg(organiqueCollectes, organiqueUnite);
+            const electroniquesKg = convertirEnKg(electroniquesCollectes, electroniquesUnite);
+            const metalliquesKg = convertirEnKg(metalliquesCollectes, metalliquesUnite);
+
+            const carburant = convertirCarburant(plastiquesKg, organiqueKg, electroniquesKg);
+            const electricite = convertirElectricite(plastiquesKg, organiqueKg, electroniquesKg);
+
+            // Ajouter à la table
+            const tableBody = document.getElementById("collecteTableBody");
+            const newRow = tableBody.insertRow();
+            newRow.innerHTML = `
+                <td>${jour}</td>
+                <td>${plastiquesKg} kg</td>
+                <td>${organiqueKg} kg</td>
+                <td>${electroniquesKg} kg</td>
+                <td>${metalliquesKg} kg</td>
+                <td>${carburant} L</td>
+                <td>${electricite} kWh</td>
+                <td><button class="btn btn-danger" onclick="supprimerLigne(this)">Supprimer</button></td>
+            `;
+
+            // Mettre à jour les totaux
+            mettreAJourTotaux();
+
+            // Réinitialiser le formulaire
+            document.getElementById("collecteForm").reset();
+        }
+
+        // Mettre à jour les totaux
+        function mettreAJourTotaux() {
+            const tableRows = document.getElementById("collecteTableBody").getElementsByTagName("tr");
+            let totalPlastiques = 0;
+            let totalOrganique = 0;
+            let totalElectroniques = 0;
+            let totalMetalliques = 0;
+            let totalCarburant = 0;
+            let totalElectricite = 0;
+
+            // Calculer les totaux
+            for (let row of tableRows) {
+                totalPlastiques += parseFloat(row.cells[1].innerText.replace(' kg', ''));
+                totalOrganique += parseFloat(row.cells[2].innerText.replace(' kg', ''));
+                totalElectroniques += parseFloat(row.cells[3].innerText.replace(' kg', ''));
+                totalMetalliques += parseFloat(row.cells[4].innerText.replace(' kg', ''));
+                totalCarburant += parseFloat(row.cells[5].innerText.replace(' L', ''));
+                totalElectricite += parseFloat(row.cells[6].innerText.replace(' kWh', ''));
+            }
+
+            // Afficher les totaux dans le tableau de bord
+            document.getElementById("totalDechets").innerText = totalPlastiques + totalOrganique + totalElectroniques + totalMetalliques + " kg";
+            document.getElementById("totalCarburant").innerText = totalCarburant + " L";
+            document.getElementById("totalElectricite").innerText = totalElectricite + " kWh";
+        }
+
+        // Supprimer une ligne de la table
+        function supprimerLigne(button) {
+            button.closest('tr').remove();
+            mettreAJourTotaux();
+        }
+
+        // Initialiser le graphique
+        var ctx = document.getElementById('statistiquesChart').getContext('2d');
+        var statistiquesChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Semaine 1', 'Semaine 2', 'Semaine 3', 'Semaine 4'],  // Labels pour l'exemple
+                datasets: [{
+                    label: 'Plastiques (kg)',
+                    data: [50, 100, 75, 150],
+                    borderColor: 'rgba(0, 123, 255, 0.7)',
+                    fill: false,
+                    tension: 0.1
+                }, {
+                    label: 'Organique (kg)',
+                    data: [30, 50, 60, 80],
+                    borderColor: 'rgba(40, 167, 69, 0.7)',
+                    fill: false,
+                    tension: 0.1
+                }, {
+                    label: 'Électroniques (kg)',
+                    data: [10, 20, 15, 30],
+                    borderColor: 'rgba(255, 193, 7, 0.7)',
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

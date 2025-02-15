@@ -3,264 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des Déchets - Énergie Durable</title>
-    
-    <!-- Lien vers Bootstrap 5 et Google Fonts -->
+    <title>Page Principale - Gestion de Déchets</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- Lien vers les icônes -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-        /* Body */
+        /* Style global */
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #a7c5eb, #f0f8ff);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: #fff;
+            padding: 0;
+            margin: 0;
         }
 
-        /* Card Style - Glassmorphism / Neomorphism */
-        .card {
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
-            transform: translateY(-5px);
-        }
-
-        /* Header */
-        .card-header {
-            background: transparent;
-            color: #3b4d75;
-            font-size: 1.6rem;
-            font-weight: 600;
+        /* Container central avec animation */
+        .container {
+            max-width: 900px;
+            margin-top: 80px;
             text-align: center;
-            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-in-out;
         }
 
-        /* Form Styling */
-        .form-label {
-            color: #3b4d75;
+        h1 {
+            font-size: 2.8rem;
+            color: #fff;
+            margin-bottom: 40px;
             font-weight: 600;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            animation: slideIn 1s ease-out;
         }
 
-        .btn-submit {
-            background: linear-gradient(135deg, #4e8ad0, #4bd8b8);
-            color: white;
-            border-radius: 50px;
-            padding: 12px 24px;
-            width: 100%;
-            font-weight: 600;
-            border: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-submit:hover {
-            background: linear-gradient(135deg, #00b8d4, #4bd8b8);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-        }
-
-        .table thead {
-            background: rgba(0, 0, 0, 0.1);
-            color: white;
-        }
-
-        .table th, .table td {
-            vertical-align: middle;
-            font-weight: 500;
-        }
-
-        .table-hover tbody tr:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Micro Animations */
-        .section-header {
-            font-size: 2rem;
-            font-weight: 600;
-            text-align: center;
-            color: #3b4d75;
-            margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-        }
-
-        /* Animation Fade-in */
-        @keyframes fadeIn {
-            0% {
+        /* Animation de transition du titre */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-50%);
                 opacity: 0;
             }
-            100% {
+            to {
+                transform: translateX(0);
                 opacity: 1;
             }
+        }
+
+        /* Style des cartes */
+        .card {
+            border: none;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.8);
+            animation: fadeInCard 1s ease-in-out forwards;
+        }
+
+        /* Animation des cartes */
+        @keyframes fadeInCard {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-header {
+            background-color: #0072ff;
+            color: white;
+            font-size: 1.5rem;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            padding: 20px;
+        }
+
+        .card-body {
+            padding: 30px;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        /* Style des boutons */
+        .btn {
+            font-size: 1.3rem;
+            padding: 15px 35px;
+            background-color: #00c6ff;
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 15px;
+        }
+
+        .btn:hover {
+            background-color: #005bb5;
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            background-color: #003f7f;
+        }
+
+        /* Animation de rebond sur les boutons */
+        .btn-primary {
+            animation: bounce 1s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Effet de transparence pour le fond */
+        .bg-translucent {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container mt-5">
-        <div class="section-header">
-            <span class="text-gradient">Gestion des Déchets et Production d’Énergie</span>
-        </div>
+    <div class="container">
+        <h1>Bienvenue sur la Gestion des Déchets et des Revenus</h1>
 
-        <div class="row">
-            <!-- Formulaire de Soumission de Déchets -->
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-header">
-                        <i class="bi bi-cloud-upload-fill"></i> Ajouter des Déchets
-                    </div>
-                    <div class="card-body">
-                        <form id="wasteForm" method="POST" action="backend.php">
-                            <div class="mb-3">
-                                <label for="wasteType" class="form-label">Type de Déchet</label>
-                                <input type="text" class="form-control" id="wasteType" name="wasteType" required placeholder="Ex: Plastique, Métal">
-                            </div>
-                            <div class="mb-3">
-                                <label for="wasteAmount" class="form-label">Quantité (kg)</label>
-                                <input type="number" class="form-control" id="wasteAmount" name="wasteAmount" required placeholder="Ex: 100">
-                            </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-submit">Soumettre</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <div class="card bg-translucent">
+            <div class="card-header">
+                Accédez aux fonctionnalités principales
             </div>
-            
-            <!-- Historique des Déchets -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <i class="bi bi-clock-history"></i> Historique des Déchets
-                    </div>
-                    <div class="card-body">
-                        <button id="exportCSV" class="btn btn-success mb-3">Exporter en CSV</button>
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Quantité (kg)</th>
-                                    <th scope="col">Date</th>
-                                </tr>
-                            </thead>
-                            <tbody id="wasteHistory">
-                                <!-- Données Injectées ici via AJAX -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <div class="card-body">
+                <p class="mb-4">Consultez et gérez les différents aspects de l'énergie et des revenus liés à la gestion des déchets.</p>
+                
+                <!-- Boutons pour accéder aux différentes pages -->
+                <a href="racceuil.html" class="btn btn-primary">Consulter la Gestion de l'Énergie</a>
+                <a href="revenu.html" class="btn btn-primary">Consulter la Gestion des Revenus</a>
             </div>
         </div>
     </div>
-
-    <!-- Chart.js pour le graphique de la production d'énergie -->
-    <div class="container mt-5">
-        <div class="section-header">
-            <span class="text-gradient">Tableau de Bord de la Production d'Énergie</span>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <canvas id="energyChart" width="400" height="200"></canvas>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        $(document).ready(function() {
-            loadWasteHistory();
-
-            // Soumettre les déchets via AJAX
-            $('#wasteForm').submit(function(e) {
-                e.preventDefault();
-                var wasteType = $('#wasteType').val();
-                var wasteAmount = $('#wasteAmount').val();
-
-                $.ajax({
-                    url: 'backend.php',
-                    type: 'POST',
-                    data: {
-                        wasteType: wasteType,
-                        wasteAmount: wasteAmount
-                    },
-                    success: function(response) {
-                        alert('Déchets ajoutés avec succès');
-                        loadWasteHistory();
-                        $('#wasteForm')[0].reset();
-                    }
-                });
-            });
-
-            // Exporter en CSV
-            $('#exportCSV').click(function() {
-                window.location.href = 'backend.php?export=true';
-            });
-
-            // Graphique de la production d'énergie
-            $.ajax({
-                url: 'backend.php',
-                type: 'GET',
-                success: function(data) {
-                    var energyData = [];
-                    var wasteTypes = [];
-                    $(data).each(function(index, value) {
-                        energyData.push(value.energy_produced);
-                        wasteTypes.push(value.waste_type);
-                    });
-
-                    var ctx = document.getElementById('energyChart').getContext('2d');
-                    var energyChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: wasteTypes,
-                            datasets: [{
-                                label: 'Énergie Produite (kWh)',
-                                data: energyData,
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
-                    });
-                }
-            });
-        });
-
-        // Charger l'historique des déchets
-        function loadWasteHistory() {
-            $.ajax({
-                url: 'backend.php',
-                type: 'GET',
-                success: function(data) {
-                    $('#wasteHistory').html(data);
-                }
-            });
-        }
-    </script>
 
 </body>
 </html>
