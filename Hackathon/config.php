@@ -12,3 +12,4 @@ if (!$conn) {
     die("Échec de la connexion : " . mysqli_connect_error());
 }
 ?>
+

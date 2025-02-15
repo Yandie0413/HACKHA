@@ -11,22 +11,133 @@
     <title>Gestion Agricole</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">  <!-- Lien vers ton fichier CSS personnalisé -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>  <!-- Pour les icônes -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Lien vers ton fichier CSS personnalisé -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Pour les icônes -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Animation smooth scroll -->
     <style>
+        /* Style général */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            margin: 0;
+        }
+
         html {
             scroll-behavior: smooth;
+        }
+
+        /* Navbar modernisée */
+        .navbar {
+            background: linear-gradient(to right, #28a745, #2d8e55);
+            transition: all 0.3s ease-in-out;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #f9d342 !important;
+        }
+
+        /* Section Hero */
+        .hero {
+            background: linear-gradient(to bottom right, #28a745, #2d8e55);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.2);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        }
+        .hero .btn {
+            background-color: #f9d342;
+            color: #333;
+            padding: 10px 25px;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .hero .btn:hover {
+            background-color: #2d8e55;
+            color: #fff;
+        }
+
+        /* Section Services */
+        .card {
+            border: none;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover img {
+            transform: scale(1.1);
+        }
+        .card-body {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Section Footer */
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+            box-shadow: inset 0 -10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .footer p {
+            font-size: 1rem;
+            color: #bbb;
+        }
+        .footer .social-icons a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        .footer .social-icons a:hover {
+            color: #f9d342;
+        }
+
+        /* Animation globale */
+        .animated {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navbar sticky avec effet de survol -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top shadow-lg">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <a class="navbar-brand" href="home.php"><i class="fas fa-leaf"></i> Gestion Agricole</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,29 +154,27 @@
                     <a class="nav-link" href="route.php">Projets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="paysans.php">Contact</a>
+                    <a class="nav-link" href="culture.php">Culture</a>
                 </li>
-                <!-- Liens vers les pages de gestion -->
-              <!-- Si besoin, ajoute d'autres liens ici -->
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section avec un fond d'illustration -->
-    <section id="home" class="hero bg-cover bg-center text-white py-5" style="background-image: url('images/agriculture.jpg');">
-        <div class="container text-center">
-            <h1 class="display-4 font-weight-bold text-shadow">Améliorons ensemble l'agriculture</h1>
-            <p class="lead text-shadow">Fournir des outils modernes, des semences et des infrastructures pour une meilleure production agricole.</p>
-            <a href="create.php" class="btn btn-light btn-lg mt-3 shadow-lg">Ajouter un paysan</a>
+    <!-- Hero Section -->
+    <section id="home" class="hero animated">
+        <div class="container">
+            <h1>Améliorons ensemble l'agriculture</h1>
+            <p>Fournir des outils modernes, des semences et des infrastructures pour une meilleure production agricole.</p>
+            <a href="ajouter_paysan.php" class="btn btn-lg">Ajouter un paysan</a>
         </div>
     </section>
 
-    <!-- Section des services ou informations -->
-    <section id="services" class="container my-5 py-5">
+    <!-- Section des services -->
+    <section id="services" class="container my-5 py-5 animated">
         <div class="row text-center">
             <div class="col-md-4 mb-4">
-                <div class="card shadow-lg border-success hover-shadow">
-                    <img src="images/culture.jpg" class="card-img-top" alt="Cultures">
+                <div class="card shadow-lg border-success">
+                    <img src="semence.jpg" class="card-img-top" alt="Cultures">
                     <div class="card-body">
                         <h5 class="card-title">Suivi des Cultures</h5>
                         <p class="card-text">Suivi détaillé des cultures des paysans pour garantir une gestion optimale.</p>
@@ -73,8 +182,8 @@
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card shadow-lg border-success hover-shadow">
-                    <img src="images/outils.jpg" class="card-img-top" alt="Outils">
+                <div class="card shadow-lg border-success">
+                    <img src="outil.jpg" class="card-img-top" alt="Outils">
                     <div class="card-body">
                         <h5 class="card-title">Outils Modernes</h5>
                         <p class="card-text">Fourniture d'outils agricoles avancés pour améliorer la productivité.</p>
@@ -82,8 +191,8 @@
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card shadow-lg border-success hover-shadow">
-                    <img src="images/route.jpg" class="card-img-top" alt="Infrastructure">
+                <div class="card shadow-lg border-success">
+                    <img src="route.jpeg" class="card-img-top" alt="Infrastructure">
                     <div class="card-body">
                         <h5 class="card-title">Infrastructures</h5>
                         <p class="card-text">Création de routes pour un meilleur accès aux marchés et à la distribution des produits.</p>
@@ -93,65 +202,24 @@
         </div>
     </section>
 
-    <!-- Section des projets -->
-    <section id="projects" class="container my-5 py-5">
-        <h2 class="text-center text-success mb-4">Nos Projets en Cours</h2>
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-lg border-success">
-                    <img src="images/projet1.jpg" class="card-img-top" alt="Projet 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Amélioration des Techniques Agricoles</h5>
-                        <p class="card-text">Formation des paysans pour utiliser des techniques modernes et rentables.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-lg border-success">
-                    <img src="images/projet2.jpg" class="card-img-top" alt="Projet 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Construction de Routes pour les Zones Rurales</h5>
-                        <p class="card-text">Faciliter l'accès aux marchés pour améliorer la circulation des produits agricoles.</p>
-                    </div>
-                </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Gestion Agricole - Tous droits réservés</p>
+            <div class="social-icons">
+                <a href="#" class="fab fa-facebook"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
             </div>
         </div>
-    </section>
-
-    <!-- Section de contact -->
-    <section id="contact" class="container py-5">
-        <h2 class="text-center text-success mb-4">Contactez-nous</h2>
-        <form action="contact_form.php" method="POST">
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <input type="text" class="form-control" name="name" placeholder="Votre Nom" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <input type="email" class="form-control" name="email" placeholder="Votre Email" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" name="message" placeholder="Votre Message" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-success btn-block btn-lg">Envoyer</button>
-        </form>
-    </section>
-
-    <!-- Pied de page élégant -->
-    <footer class="footer bg-dark text-white text-center py-4 mt-5">
-        <p>&copy; 2025 Gestion Agricole - Tous droits réservés</p>
     </footer>
 
-    <!-- Scripts pour l'animation -->
     <script>
-        // Animation au survol des cartes
-        const cards = document.querySelectorAll('.hover-shadow');
-        cards.forEach(card => {
-            card.addEventListener('mouseover', () => {
-                card.classList.add('shadow-lg');
-            });
-            card.addEventListener('mouseout', () => {
-                card.classList.remove('shadow-lg');
+        // Animation de la page au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.animated');
+            elements.forEach((el, index) => {
+                setTimeout(() => el.classList.add('fadeInUp'), index * 200); 
             });
         });
     </script>
